@@ -27,7 +27,7 @@ jobs:
 
       - run: databricks bundle deploy
         env:
-          DATABRICKS_TOKEN: ${{ secrets.demo_qa_sp_token }}
+          DATABRICKS_TOKEN: ${{ secrets.dbdemo_dab_sp_token }}
           DATABRICKS_BUNDLE_ENV: qa
 
   pipeline_update:
@@ -40,14 +40,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-#       - uses: actions/setup-python@v4
-#         with:
-#           python-version: 3.11
-#           cache: 'pip'
-
-#       - run: pip install -r requirements.txt
-#         working-directory: .github/support
-
       - uses: databricks/setup-cli@main
 
       - shell: bash
@@ -56,15 +48,5 @@ jobs:
           set -o pipefail
           databricks bundle run fe_medium_metrics --refresh-all 2>&1 | tee output.log
         env:
-          DATABRICKS_TOKEN: ${{ secrets.demo_qa_sp_token }}
+          DATABRICKS_TOKEN: ${{ secrets.dbdemo_dab_sp_token }}
           DATABRICKS_BUNDLE_ENV: qa
-
-#       - shell: bash
-#         if: always()
-#         name: Emit annotations
-#         run: |
-#           pipeline_id=$(head -1 output.log | awk -F / '{print $6}')
-#           update_id=$(head -1 output.log | awk -F / '{print $8}')
-#           PYTHONPATH=$PWD:$PWD/.github/support python3 .github/support/emit_annotations.py $pipeline_id $update_id
-#         env:
-#           DATABRICKS_TOKEN: ${{ secrets.E2_DEMO_WEST_TOKEN }}
