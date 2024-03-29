@@ -24,7 +24,7 @@ jobs:
 
       - run: databricks bundle deploy
         env:
-          DATABRICKS_TOKEN: ${{ secrets.DBDEMO_DAB_SP }}
+          #DATABRICKS_TOKEN: ${{ secrets.DBDEMO_DAB_SP }}
           DATABRICKS_BUNDLE_ENV: production
 
   pipeline_update:
@@ -41,5 +41,5 @@ jobs:
 
       - run: databricks bundle run fe_medium_metrics --refresh-all
         env:
-          DATABRICKS_TOKEN: ${{ secrets.DBDEMO_DAB_SP }}
+          #DATABRICKS_TOKEN: ${{ secrets.DBDEMO_DAB_SP }}
           DATABRICKS_BUNDLE_ENV: production
