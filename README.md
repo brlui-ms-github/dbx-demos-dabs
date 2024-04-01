@@ -1,7 +1,5 @@
 # Databricks Asset Bundles
 
-_Write code once, deploy to lakehouses everywhere..._
-
 ## Introduction
 _Databricks Asset Bundles_, also known simply as bundles, enable you to programmatically validate, deploy, and run the projects you are working on in Databricks via the [Databricks CLI](https://github.com/databricks/cli).  A bundle is a collection of one or more related files that contain:
 
