@@ -32,7 +32,7 @@ jobs:
 
       - run: databricks bundle deploy
         env:
-          DATABRICKS_TOKEN: ${{ secrets.DBDEMO_DAB_SP }}
+          DATABRICKS_TOKEN: ${{ secrets.DBDEMO_DAB_SP_PAT }}
           DATABRICKS_BUNDLE_ENV: qa
 
   pipeline_update:
@@ -58,5 +58,5 @@ jobs:
           set -o pipefail
           databricks bundle run fe_medium_metrics --refresh-all 2>&1 | tee output.log
         env:
-          DATABRICKS_TOKEN: ${{ secrets.DBDEMO_DAB_SP }}
+          DATABRICKS_TOKEN: ${{ secrets.DBDEMO_DAB_SP_PAT }}
           DATABRICKS_BUNDLE_ENV: qa
